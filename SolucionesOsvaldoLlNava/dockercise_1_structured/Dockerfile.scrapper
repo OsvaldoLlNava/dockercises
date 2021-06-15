@@ -1,0 +1,11 @@
+FROM golang:1.16
+
+WORKDIR /go/src/
+
+COPY . .
+
+RUN go build -o ./app/out/go-app app/cmd/scrapper/main.go
+
+
+
+CMD ["./app/out/go-app"]
