@@ -111,3 +111,29 @@ func InsertarDocumento(ctx context.Context, coleccion *mongo.Collection, p Docke
 		fmt.Println("Insertado correcto")
 	}
 }
+
+func InsertarTodo(ctx context.Context, coleccion *mongo.Collection, p []DockerciseModels.Person) {
+
+	datos := make([]interface{}, len(p))
+
+	for i, v := range p {
+		datos[i] = bson.D{
+			{Key: "id", Value: v.Id},
+			{Key: "first_name", Value: v.First_Name},
+			{Key: "last_name", Value: v.Last_Name},
+			{Key: "company", Value: v.Company},
+			{Key: "email", Value: v.Email},
+			{Key: "ip_address", Value: v.Ip_Address},
+			{Key: "phone_number", Value: v.Phone_Number},
+		}
+	}
+
+	fmt.Println(datos)
+
+	_, err := coleccion.InsertMany(
+		ctx, datos,
+	)
+	if err != nil {
+		panic(err)
+	}
+}

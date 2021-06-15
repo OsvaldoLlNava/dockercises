@@ -30,7 +30,7 @@ func SpecificResult(w http.ResponseWriter, r *http.Request) {
 }
 
 func HomePage(w http.ResponseWriter, r *http.Request) {
-	t, err := template.ParseFiles("./app/resources/template/home.html")
+	t, err := template.ParseFiles("./app/resources/templates/home.html")
 	if err != nil {
 		fmt.Fprintf(w, "Bienvenido al Home")
 	}

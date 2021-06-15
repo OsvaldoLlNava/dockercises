@@ -30,9 +30,11 @@ func main() {
 	db := client.Database("dockercise1")
 	coleccion := db.Collection("Personas")
 
-	for _, v := range people.Personas {
-		DockerciseDatabase.InsertarDocumento(ctx, coleccion, v)
-	}
+	// for _, v := range people.Personas {
+	// 	DockerciseDatabase.InsertarDocumento(ctx, coleccion, v)
+	// }
+
+	DockerciseDatabase.InsertarTodo(ctx, coleccion, people.Personas)
 
 	fmt.Println("Proceso Finalizado")
 
