@@ -128,7 +128,7 @@ func InsertarTodo(ctx context.Context, coleccion *mongo.Collection, p []Dockerci
 		}
 	}
 
-	fmt.Println(datos)
+	// fmt.Println(datos)
 
 	_, err := coleccion.InsertMany(
 		ctx, datos,

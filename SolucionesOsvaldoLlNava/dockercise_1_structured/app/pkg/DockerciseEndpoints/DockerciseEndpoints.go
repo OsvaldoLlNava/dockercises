@@ -37,7 +37,7 @@ func HomePage(w http.ResponseWriter, r *http.Request) {
 
 	err = t.Execute(w, nil)
 	if err != nil {
-		panic(err)
+		fmt.Fprintf(w, "Pagina de home temporalmente fuera de servicio")
 	}
 }
 
