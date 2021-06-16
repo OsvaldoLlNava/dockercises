@@ -11,6 +11,14 @@ import (
 	"github.com/go-chi/chi/v5"
 )
 
+func HandleRequests() {
+	r := chi.NewRouter()
+	r.Get("/", HomePage)
+	r.Get("/people", AllResults)
+	r.Get("/people/{userId}", SpecificResult)
+	http.ListenAndServe(":7777", r)
+}
+
 func AllResults(w http.ResponseWriter, r *http.Request) {
 	p := obtenerTodo()
 
