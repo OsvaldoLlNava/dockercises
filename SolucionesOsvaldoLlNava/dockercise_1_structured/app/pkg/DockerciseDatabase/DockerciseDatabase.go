@@ -94,24 +94,6 @@ func ObtenerUnaPersona(id string) DockerciseModels.Person {
 
 }
 
-func InsertarDocumento(ctx context.Context, coleccion *mongo.Collection, p DockerciseModels.Person) {
-	_, err := coleccion.InsertOne(ctx, bson.D{
-		{Key: "id", Value: p.Id},
-		{Key: "first_name", Value: p.First_Name},
-		{Key: "last_name", Value: p.Last_Name},
-		{Key: "company", Value: p.Company},
-		{Key: "email", Value: p.Email},
-		{Key: "ip_address", Value: p.Ip_Address},
-		{Key: "phone_number", Value: p.Phone_Number},
-	})
-
-	if err != nil {
-		fmt.Println(err)
-	} else {
-		fmt.Println("Insertado correcto")
-	}
-}
-
 func InsertarTodo(ctx context.Context, coleccion *mongo.Collection, p []DockerciseModels.Person) {
 
 	datos := make([]interface{}, len(p))
