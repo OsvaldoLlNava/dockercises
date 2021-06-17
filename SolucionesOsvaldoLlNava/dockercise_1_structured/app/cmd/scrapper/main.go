@@ -15,18 +15,10 @@ func main() {
 	defer DockerciseDatabase.Disconnect(ctx, client, cancel)
 
 	// leer el archivo
-	content, err := ioutil.ReadFile("./app/resources/info/people.xml")
-	if err != nil {
-		panic(err)
-	}
+	people := ReadFromXml("./app/resources/info/people.xml")
+
 	// fmt.Println(content)
 
-	var people DockerciseModels.People
-
-	err = xml.Unmarshal(content, &people)
-	if err != nil {
-		panic(err)
-	}
 	db := client.Database("dockercise1")
 	coleccion := db.Collection("Personas")
 
@@ -34,4 +26,20 @@ func main() {
 
 	fmt.Println("Proceso Finalizado")
 
+}
+
+func ReadFromXml(path string) DockerciseModels.People {
+	content, err := ioutil.ReadFile(path)
+	if err != nil {
+		panic(err)
+	}
+
+	var people DockerciseModels.People
+
+	err = xml.Unmarshal(content, &people)
+	if err != nil {
+		panic(err)
+	}
+
+	return people
 }
